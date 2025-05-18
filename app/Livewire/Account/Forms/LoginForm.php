@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Users\Forms;
+namespace App\Livewire\Account\Forms;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;

@@ -12,7 +12,7 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
 });
 
 // Защищённые маршруты админки
-Route::prefix('admin')->middleware(['auth:admin', 'verified', 'no-user'])->group(function () {
+Route::prefix('admin')->middleware(['auth:admin', 'verified', 'no-account'])->group(function () {
     Route::view('dashboard', 'livewire.admin.dashboard')->name('admin.dashboard');
 
     // Пользователи

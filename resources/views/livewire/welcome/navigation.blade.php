@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="guestNavbar">
             <div class="d-flex gap-2 mx-auto">
                 @auth('web')
-                    <a href="{{ route('account.dashboard') }}" class="nav-link text-light">
+                    <a href="{{ route('account.subscriptions') }}" class="nav-link text-light">
                         Личный кабинет
                     </a>
                 @endauth

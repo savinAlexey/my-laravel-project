@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Users;
+namespace App\Livewire\Account;
 
 use Livewire\Component;
 use App\Models\SubscriptionPlan;
@@ -28,7 +28,7 @@ class BuySubscription extends Component
     {
         $plans = SubscriptionPlan::all(); // Получаем все доступные планы
 
-        return view('livewire.user.buy-subscription', compact('plans'))
+        return view('livewire.account.buy-subscription', compact('plans'))
             ->layout('layouts.app');
     }
 }

@@ -1,8 +1,23 @@
-<div>
+<?php
+
+use App\Models\SubscriptionPlan;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
+use Livewire\Volt\Component;
+
+new #[Layout('layouts.app')] class extends Component {
+    public function subscribe($planId)
+    {
+        // Пример: редирект на страницу оплаты
+        $this->redirectRoute('account.checkout', ['plan' => $planId], navigate: true);
+    }
+}; ?>
+
+<div class="container py-4">
     <h2 class="mb-4">Выберите подписку</h2>
 
     <div class="row">
-        @foreach($plans as $plan)
+        @foreach(SubscriptionPlan::with('platform')->get() as $plan)
             <div class="col-md-4 mb-4">
                 <div class="card bg-dark text-light h-100">
                     <div class="card-body">
@@ -18,3 +33,4 @@
         @endforeach
     </div>
 </div>
+

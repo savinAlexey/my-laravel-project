@@ -14,7 +14,7 @@ test('profile page is displayed', function () {
         ->assertOk()
         ->assertSeeVolt('profile.update-profile-information-form')
         ->assertSeeVolt('profile.update-password-form')
-        ->assertSeeVolt('profile.delete-user-form');
+        ->assertSeeVolt('profile.delete-account-form');
 });
 
 test('profile information can be updated', function () {
@@ -55,7 +55,7 @@ test('email verification status is unchanged when the email address is unchanged
     $this->assertNotNull($user->refresh()->email_verified_at);
 });
 
-test('user can delete their account', function () {
+test('account can delete their account', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user);

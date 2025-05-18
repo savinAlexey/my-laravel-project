@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,9 +16,13 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
             'no-admin' => \App\Http\Middleware\PreventAdminFromUserArea::class,
-            'no-user' => \App\Http\Middleware\PreventUserFromAdminArea::class,
+            'no-account' => \App\Http\Middleware\PreventUserFromAdminArea::class,
+            'swego.subscription' => \App\Http\Middleware\CheckSwegoSubscription::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->renderable(function (AuthenticationException $e) {
+            return redirect()->guest(route('login'))
+                ->with('error', 'Требуется авторизация');
+        });
     })->create();
