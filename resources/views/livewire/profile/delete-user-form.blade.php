@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Users\Actions\Logout;
+use App\Livewire\Account\Actions\Logout;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Volt\Component;
 
@@ -8,7 +8,7 @@ new class extends Component {
     public string $password = '';
 
     /**
-     * Delete the currently authenticated user.
+     * Delete the currently authenticated account.
      */
     public function deleteUser(Logout $logout): void
     {

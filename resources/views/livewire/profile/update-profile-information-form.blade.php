@@ -21,7 +21,7 @@ new class extends Component
     }
 
     /**
-     * Update the profile information for the currently authenticated user.
+     * Update the profile information for the currently authenticated account.
      */
     public function updateProfileInformation(): void
     {
@@ -44,14 +44,14 @@ new class extends Component
     }
 
     /**
-     * Send an email verification notification to the current user.
+     * Send an email verification notification to the current account.
      */
     public function sendVerification(): void
     {
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('account.dashboard', absolute: false));
+            $this->redirectIntended(default: route('account.subscriptions', absolute: false));
 
             return;
         }

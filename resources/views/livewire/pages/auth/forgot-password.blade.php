@@ -17,9 +17,9 @@ new #[Layout('layouts.guest')] class extends Component
             'email' => ['required', 'string', 'email'],
         ]);
 
-        // We will send the password reset link to this user. Once we have attempted
+        // We will send the password reset link to this account. Once we have attempted
         // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
+        // need to show to the account. Finally, we'll send out a proper response.
         $status = Password::sendResetLink(
             $this->only('email')
         );
@@ -46,6 +46,7 @@ new #[Layout('layouts.guest')] class extends Component
 
     <form wire:submit="sendPasswordResetLink">
         <!-- Email Address -->
+
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />

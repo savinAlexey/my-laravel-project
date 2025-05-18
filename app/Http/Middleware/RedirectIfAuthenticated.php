@@ -14,7 +14,7 @@ class RedirectIfAuthenticated
             // Редирект в зависимости от guard-а
             return match ($guard) {
                 'admin' => redirect()->route('admin.dashboard'),
-                default => redirect()->route('account.dashboard'),
+                default => redirect()->route('account.subscriptions'),
             };
         }
 

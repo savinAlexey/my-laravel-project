@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Users\Actions\Logout;
+use App\Livewire\Account\Actions\Logout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
@@ -8,12 +8,12 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.guest')] class extends Component {
     /**
-     * Send an email verification notification to the user.
+     * Send an email verification notification to the account.
      */
     public function sendVerification(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('account.dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('account.subscriptions', absolute: false), navigate: true);
 
             return;
         }
@@ -24,7 +24,7 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 
     /**
-     * Log the current user out of the application.
+     * Log the current account out of the application.
      */
     public function logout(Logout $logout): void
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Users\Actions;
+namespace App\Livewire\Account\Actions;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 class Logout
 {
     /**
-     * Log the current user out of the application.
+     * Log the current account out of the application.
      */
     public function __invoke(): void
     {

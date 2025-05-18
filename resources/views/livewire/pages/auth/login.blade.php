@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Users\Forms\LoginForm;
+use App\Livewire\Account\Forms\LoginForm;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
@@ -19,7 +19,7 @@ new #[Layout('layouts.guest')] class extends Component {
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('account.dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('account.subscriptions', absolute: false), navigate: true);
     }
 }; ?>
 
@@ -33,32 +33,34 @@ new #[Layout('layouts.guest')] class extends Component {
             <form wire:submit="login" class="needs-validation {{ $errors->any() ? 'was-validated' : '' }}" novalidate>
                 <!-- Email Address -->
                 <div class="mb-3">
-                    <x-input-label for="email" value="{{ __('Email') }}" required />
+                    <x-input-label for="email" value="{{ __('Email') }}" required/>
                     <x-text-input
-                        wire:model="form.email"
-                        id="email"
-                        class="form-control"
-                        type="email"
-                        name="email"
-                        required
-                        autofocus
-                        autocomplete="username"
+                            wire:model="form.email"
+                            id="email"
+                            class="form-control"
+                            type="email"
+                            name="email"
+                            required
+                            autofocus
+                            autocomplete="username"
                     />
-                    <x-input-error :messages="$errors->get('form.email')" icon />
+                    <x-input-error :messages="$errors->get('form.email')" icon/>
                 </div>
 
                 <!-- Password -->
                 <div class="mb-3">
                     <x-input-label for="password" :value="__('Password')"/>
 
-                    <x-text-input wire:model="form.password" id="password" class="form-control" type="password" name="password" required autocomplete="current-password"/>
+                    <x-text-input wire:model="form.password" id="password" class="form-control" type="password"
+                                  name="password" required autocomplete="current-password"/>
 
-                    <x-input-error :messages="$errors->get('form.password')" icon />
+                    <x-input-error :messages="$errors->get('form.password')" icon/>
                 </div>
 
                 <!-- Remember Me -->
                 <div class="mb-3 form-check">
-                    <input wire:model="form.remember" id="remember" type="checkbox" class="form-check-input" name="remember">
+                    <input wire:model="form.remember" id="remember" type="checkbox" class="form-check-input"
+                           name="remember">
                     <label for="remember_me" class="form-check-label small text-muted">
                         {{ __('Запомните меня') }}
                     </label>

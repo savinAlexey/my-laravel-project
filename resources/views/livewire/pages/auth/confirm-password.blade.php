@@ -10,7 +10,7 @@ new #[Layout('layouts.guest')] class extends Component
     public string $password = '';
 
     /**
-     * Confirm the current user's password.
+     * Confirm the current account's password.
      */
     public function confirmPassword(): void
     {
@@ -29,7 +29,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         session(['auth.password_confirmed_at' => time()]);
 
-        $this->redirectIntended(default: route('account.dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('account.subscriptions', absolute: false), navigate: true);
     }
 }; ?>
 

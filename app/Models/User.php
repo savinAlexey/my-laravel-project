@@ -48,4 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Subscription::class);
     }
 
+    public function hasSubscription(string $platform): bool
+    {
+        return $this->subscriptions()
+            ->whereHas('platform', fn ($q) => $q->where('code', $platform))
+            ->where('active', true)
+            ->exists();
+    }
 }

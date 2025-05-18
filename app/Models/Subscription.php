@@ -3,25 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Subscription extends Model
 {
-    protected $fillable = [
-        'user_id', 'platform_id', 'starts_at', 'ends_at', 'active'
+    protected $casts = [
+        'active' => 'boolean',
+        'ends_at' => 'datetime'
     ];
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function platform(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    // Отношение к платформе
+    public function platform(): BelongsTo
     {
         return $this->belongsTo(Platform::class);
     }
-    public function plan(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+
+    // Отношение к настройкам Swego
+    public function swegoSettings(): HasOne
     {
-        return $this->belongsTo(SubscriptionPlan::class, 'subscription_plan_id');  // замените platform_id на subscription_plan_id
+        return $this->hasOne(SwegoSettings::class);
     }
 }
+
 
